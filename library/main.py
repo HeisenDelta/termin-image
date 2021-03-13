@@ -14,8 +14,10 @@ str_ = ''
 
 for i in range(min(image.shape[0], 500)):
     for j in range(min(image.shape[1], termSize.columns)):
+
         pix = image[i][j]
         hexCode = '#%02x%02x%02x' % (pix[2], pix[1], pix[0])
+
         str_ += f'[{hexCode}]O[/{hexCode}]'
     str_ += '\n'
 
