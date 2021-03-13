@@ -5,8 +5,6 @@ import sys
 from rich.console import Console
 console = Console()
 
-chars = ',:;!=*%#$@&'
-
 image = cv2.imread(f'/home/heisendelta/Pictures/{sys.argv[1]}', cv2.IMREAD_UNCHANGED)
 imgSize = (image.shape[1], image.shape[0])
 termSize = os.get_terminal_size()
@@ -36,7 +34,7 @@ for i in range(min(imgSize[1], 500)):
         pix = image[i][j]
         hexCode = '#%02x%02x%02x' % (pix[2], pix[1], pix[0])
 
-        str_ += f'[{hexCode}]0[/{hexCode}]'
+        str_ += f'[{hexCode}]@[/{hexCode}]'
     str_ += '\n'
 
 console.print(str_)
