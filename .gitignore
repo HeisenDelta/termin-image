@@ -45,3 +45,4 @@ sftp-config.json
 
 # Folders
 tests/
+__pycache__/
