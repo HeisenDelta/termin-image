@@ -7,11 +7,6 @@
 
 <h2>Description</h2>
 
-<div>
-    <div style="float: left; width: 50%;"><img src="images/git1.png"></div>
-    <div style="float: left; width: 50%;"><img src="images/git2.png"></div>
-</div><br>
-
 <p>Termin Image is an easy python library to render 2D images in the terminal in color and in grayscale.</p>
 <p>Note: Color images will only work in the Linux, Mac and new Windows Terminal,</p>
 
@@ -31,7 +26,7 @@
 git clone https://github.com/HeisenDelta/termin-image.git
 </pre>
 
-<p>Import the Image class and create a new image.</p>
+<p>From here, you can import the Image class and create a new image.</p>
 <pre>
 from library.main import TerminalImage
 from rich.console import Console
@@ -40,15 +35,17 @@ console = Console()
 image = TerminalImage('PATH')
 </pre>
 
-<p>From here, you can print grayscale images ...</p>
+<p>You can print grayscale images ...</p>
 <pre>
 console.print(image.grayscale(orientation = 'HEIGHT'))
 </pre>
+<img src="images/git1.png">
 
 <p>Or images in color.</p>
 <pre>
 console.print(image.color(orientation = 'HEIGHT', details = False))
 </pre>
+<img src="images/git2.png">
 
 <p>You can even change the character used to print the images (for colored images)</p>
 <pre>
