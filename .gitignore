@@ -46,3 +46,6 @@ sftp-config.json
 # Folders
 tests/
 __pycache__/
+
+# HTML files
+*.html
