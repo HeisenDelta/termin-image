@@ -39,13 +39,13 @@ image = TerminalImage('PATH')
 <pre>
 console.print(image.grayscale(orientation = 'HEIGHT'))
 </pre>
-<img src="images/git1.png">
+<img src="images/git2.png">
 
 <p>Or images in color.</p>
 <pre>
 console.print(image.color(orientation = 'HEIGHT', details = False))
 </pre>
-<img src="images/git2.png">
+<img src="images/git1.png">
 
 <p>You can even change the character used to print the images (for colored images)</p>
 <pre>
