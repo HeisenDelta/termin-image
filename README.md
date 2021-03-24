@@ -1,9 +1,9 @@
 # TerminImage
 
-<img src="https://img.shields.io/github/issues/HeisenDelta/termin-image">
-<img src="https://img.shields.io/github/forks/HeisenDelta/termin-image">
-<img src="https://img.shields.io/github/stars/HeisenDelta/termin-image">
-<img src="https://img.shields.io/github/license/HeisenDelta/termin-image">
+<div>
+    <img src="https://img.shields.io/github/issues/HeisenDelta/termin-image" style="float:left;">
+    <img src="https://img.shields.io/github/license/HeisenDelta/termin-image" style="float:left; margin-left: 5%;">
+</div>
 
 <h2>Description</h2>
 
