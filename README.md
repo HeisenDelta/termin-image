@@ -1,4 +1,4 @@
-<h1 align="center">Termin Image</h1>
+<h1>Termin Image</h1>
 
 <div>
     <img src="https://img.shields.io/github/issues/HeisenDelta/termin-image" style="float:left;">
@@ -7,9 +7,13 @@
 
 <h2>Description</h2>
 
+<div>
+    <div style="float: left; width: 50%;"><img src="images/git1.png"></div>
+    <div style="float: left; width: 50%;"><img src="images/git2.png"></div>
+</div><br>
+
 <p>Termin Image is an easy python library to render 2D images in the terminal in color and in grayscale.</p>
 <p>Note: Color images will only work in the Linux, Mac and new Windows Terminal,</p>
-
 
 <h2>Libraries</h2>
 

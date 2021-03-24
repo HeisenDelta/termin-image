@@ -107,7 +107,6 @@ if __name__ == '__main__':
     imag = TerminalImage('/home/heisendelta/Pictures/' + sys.argv[1])
     
     os.system('clear')
-    imag.char_ = '0'
 
     if sys.argv[2] == 'G': 
         if imag.grayscale(orientation = 'HEIGHT'): console.print(imag.grayscale(orientation = 'HEIGHT'))

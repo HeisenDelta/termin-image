@@ -48,4 +48,4 @@ tests/
 __pycache__/
 
 # HTML files
-*.html
+test.html
