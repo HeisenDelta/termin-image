@@ -13,7 +13,7 @@ class ProfileImage():
         self.image_ = TerminalImage(path)
 
         self.gray_image_ = self.image_.grayscale(orientation = 'HEIGHT').split('\n')
-        self.color_image__ = self.image_.color(orientation = 'HEIGHT', details = False).split('\n')
+        self.color_image_ = self.image_.color(orientation = 'HEIGHT', details = False).split('\n')
         
         self.iwidth_ = len(self.gray_image_[0])
         self.iheight_ = len(self.gray_image_)
