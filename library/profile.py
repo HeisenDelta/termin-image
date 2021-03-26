@@ -95,7 +95,7 @@ class ProfileImage():
                         # write_file.write(self.draw_circle(10, xpos = cur_pos[0], ypos = cur_pos[1]))
                         # write_file.close()
                 elif command[0] == 'QUIT': 
-                    return self.draw_circle(10, xpos = cur_pos[0], ypos = cur_pos[1])
+                    return self.draw_circle(10, xpos = cur_pos[0], ypos = cur_pos[1], grayscale = g_)
                     break
                 else: print('Unrecognized Comman d')
 
