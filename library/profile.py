@@ -9,11 +9,11 @@ console = Console()
 
 class ProfileImage():
 
-    def __init__(self, path):
+    def __init__(self, path, factor = 1):
         self.image_ = TerminalImage(path)
 
-        self.gray_image_ = self.image_.grayscale(orientation = 'HEIGHT').split('\n')
-        self.color_image_ = self.image_.color(orientation = 'HEIGHT', details = False).split('\n')
+        self.gray_image_ = self.image_.grayscale(orientation = 'HEIGHT', factor = factor).split('\n')
+        self.color_image_ = self.image_.color(orientation = 'HEIGHT', details = False, factor = factor).split('\n')
         
         self.iwidth_ = len(self.gray_image_[0])
         self.iheight_ = len(self.gray_image_)
@@ -104,10 +104,10 @@ class ProfileImage():
 if __name__ == '__main__':
 
     try:
-
-        image = ProfileImage(f'/home/heisendelta/Pictures/{sys.argv[1]}')
+        image = ProfileImage(f'/home/heisendelta/Pictures/{sys.argv[1]}', 0.5)
 
         if sys.argv[2] == 'G': print(image.select_profile(True))
         elif sys.argv[2] == 'C': print(image.select_profile(False))
         else: exit()
+
     except IndexError: exit()
