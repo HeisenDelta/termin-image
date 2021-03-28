@@ -9,8 +9,9 @@ console = Console()
 
 class ProfileImage():
 
-    def __init__(self, path, factor = 1):
+    def __init__(self, path, factor = 1, char = None):
         self.image_ = TerminalImage(path)
+        if char: self.image_.char_ = char
 
         self.gray_image_ = self.image_.grayscale(orientation = 'HEIGHT', factor = factor).split('\n')
         self.color_image_ = self.image_.color(orientation = 'HEIGHT', details = False, factor = factor).split('\n')
