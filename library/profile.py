@@ -104,7 +104,8 @@ class ProfileImage():
 if __name__ == '__main__':
 
     try:
-        image = ProfileImage(f'/home/heisendelta/Pictures/{sys.argv[1]}', 0.5)
+        try: image = ProfileImage(f'/home/heisendelta/Pictures/{sys.argv[1]}', sys.argv[3])
+        except IndexError: image = ProfileImage(f'/home/heisendelta/Pictures/{sys.argv[1]}')
 
         if sys.argv[2] == 'G': print(image.select_profile(True))
         elif sys.argv[2] == 'C': print(image.select_profile(False))
