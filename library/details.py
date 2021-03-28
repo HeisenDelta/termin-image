@@ -4,20 +4,37 @@ from profile import ProfileImage
 from rich.console import Console
 console = Console()
 
-image = ProfileImage(f'/home/heisendelta/Pictures/{sys.argv[1]}')
+try: factor_ = float(sys.argv[2].strip())
+except IndexError: factor_ = 1
+
+image = ProfileImage(f'/home/heisendelta/Pictures/{sys.argv[1]}', factor_)
 image_text = image.select_profile(False).split('\n')
 
 # Operations
-oper = [
-    '', '', '\t\tName: HeisenDelta', '',
-    '\t\tAge: Unknown', '',
-    '\t\tBirthplace: Vienna, Austria', '',
-    '\t\tProficiencies: Python, Javascript, C++', ''
-]
+
+details = []
+with open('details.txt', 'r') as handle: 
+    details = ['\t\t' + line_.replace('\n', '') for line_ in handle.readlines()]
+
 os.system('clear')
 
-console.print(image_text[0])
-for i in range(1, len(image_text) - 1):
-    try: console.print(image_text[i] + oper[i - 1])
+if len(details) > len(image_text): exit()                                                       # Currently exits if details exceed image text
+
+if len(details) <= (len(image_text) // 2) - 1: 
+    details_ = []
+    for detail in details: 
+        details_.append(detail)
+        details_.append('')
+    details = details_[:len(details_) - 1]
+
+# Doesn't quite work ...  remember to fix later
+
+sps_length = (len(image_text) - len(details)) // 2
+for j in range(sps_length): console.print(image_text[j])
+
+for i in range(sps_length, len(image_text) - sps_length):
+
+    try: console.print(image_text[i] + details[i - sps_length])
     except IndexError: console.print(image_text[i])
-console.print(image_text[len(image_text) - 1])
+
+for k in range(len(image_text) - sps_length, len(image_text)): console.print(image_text[k])
