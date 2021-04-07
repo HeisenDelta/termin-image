@@ -53,10 +53,10 @@ class TerminalImage():
             # os.system('clear')
 
             if '\n'.join(asciiImage): self.grayscale_ = '\n'.join(asciiImage)
-            return '\n'.join(asciiImage)
     
-        except FileNotFoundError: print(f'{self.path_} not found')
+        except FileNotFoundError: print(f'File [{self.path_}] not found')
 
+        return self.grayscale_
 
     def color(self, details = True, factor = 1, orientation = ['WIDTH', 'HEIGHT']):
 
@@ -99,8 +99,8 @@ class TerminalImage():
 
             str_ += '\n'
 
-        if str_: self.color_ = str_
-        return str_
+        self.color_ = str_
+        return self.color_
 
 
 if __name__ == '__main__':
