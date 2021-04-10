@@ -50,6 +50,3 @@ __pycache__/
 
 # HTML Test files (for the README)
 test.html
-
-# Environment files
-*.env
