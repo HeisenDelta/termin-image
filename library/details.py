@@ -1,13 +1,20 @@
 import sys
 import os
+from dotenv import load_dotenv
+from pathlib import Path
 from profile import ProfileImage
 from rich.console import Console
 console = Console()
 
-try: factor_ = float(sys.argv[2].strip())
-except IndexError: factor_ = 1
+load_dotenv(dotenv_path = Path(sys.argv[1]))
+PATH_ = os.getenv('PATH_')
+IMG_NAME = os.getenv('IMG_NAME')
+FACTOR = os.getenv('FACTOR')
 
-image = ProfileImage(f'/home/heisendelta/Pictures/{sys.argv[1]}', factor_)
+if not PATH_ and not IMG_NAME: raise FileNotFoundError('Path is not defined')
+if IMG_NAME: PATH_ += IMG_NAME
+
+image = ProfileImage(PATH_, float(FACTOR))
 image_text = image.select_profile(False).split('\n')
 
 # Operations

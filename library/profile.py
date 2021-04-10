@@ -2,6 +2,8 @@ from main import TerminalImage
 import sys
 import os
 import time
+from dotenv import load_dotenv
+from pathlib import Path
 
 from rich.prompt import Prompt
 from rich.console import Console
@@ -96,20 +98,29 @@ class ProfileImage():
                         # write_file.write(self.draw_circle(10, xpos = cur_pos[0], ypos = cur_pos[1]))
                         # write_file.close()
                 elif command[0] == 'QUIT': 
+                    os.system('clear')
                     return self.draw_circle(10, xpos = cur_pos[0], ypos = cur_pos[1], grayscale = g_)
-                    break
-                else: print('Unrecognized Comman d')
+                else: print('Unrecognized Command')
 
             time.sleep(0.3)
 
 if __name__ == '__main__':
 
-    try:
-        try: image = ProfileImage(f'/home/heisendelta/Pictures/{sys.argv[1]}', sys.argv[3])
-        except IndexError: image = ProfileImage(f'/home/heisendelta/Pictures/{sys.argv[1]}')
+    load_dotenv(dotenv_path = Path(sys.argv[1]))
+    PATH_ = os.getenv('PATH_')
+    IMG_NAME = os.getenv('IMG_NAME')
+    COLOR = os.getenv('COLOR')
+    FACTOR = os.getenv('FACTOR')
 
-        if sys.argv[2] == 'G': print(image.select_profile(True))
-        elif sys.argv[2] == 'C': print(image.select_profile(False))
-        else: exit()
+    if not PATH_ and not IMG_NAME: raise FileNotFoundError('Path is not defined')
+    if IMG_NAME: PATH_ += IMG_NAME
+
+    try:
+        try: image = ProfileImage(PATH_, factor = float(FACTOR))
+        except IndexError: image = ProfileImage(PATH_)
+
+        os.system('clear')
+        if COLOR == 'True': console.print(image.select_profile(False))
+        else: print(image.select_profile(True))
 
     except IndexError: exit()

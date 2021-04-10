@@ -3,6 +3,8 @@ import cv2
 import sys
 from PIL import Image
 from rich.console import Console
+from dotenv import load_dotenv
+from pathlib import Path
 console = Console()
 
 class TerminalImage():
@@ -105,10 +107,18 @@ class TerminalImage():
 
 if __name__ == '__main__':
 
-    # Defaults to Pictures directory of Linux
-    imag = TerminalImage('/home/heisendelta/Pictures/' + sys.argv[1])
+    load_dotenv(dotenv_path = Path(sys.argv[1]))
+    PATH_ = os.getenv('PATH_')
+    IMG_NAME = os.getenv('IMG_NAME')
+    COLOR = os.getenv('COLOR')
+
+    if not PATH_ and not IMG_NAME: raise FileNotFoundError('Path is not defined')
+    if IMG_NAME: PATH_ += IMG_NAME
+
+    # THe path specified in the environment file
+    imag = TerminalImage(PATH_)
 
     os.system('clear')
 
-    if sys.argv[2] == 'G': console.print(imag.grayscale(orientation = 'HEIGHT', factor = 0.5))
-    elif sys.argv[2] == 'C': console.print(imag.color(orientation = 'HEIGHT', details = False, factor = 0.5))
+    if COLOR == 'True': console.print(imag.color(orientation = 'HEIGHT', details = False, factor = 0.5))
+    else: console.print(imag.grayscale(orientation = 'HEIGHT', factor = 0.5))
