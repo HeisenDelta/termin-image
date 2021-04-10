@@ -48,5 +48,8 @@ sftp-config.json
 tests/
 __pycache__/
 
-# HTML files
+# HTML Test files (for the README)
 test.html
+
+# Environment files
+*.env
