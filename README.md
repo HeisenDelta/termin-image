@@ -17,6 +17,7 @@
     <li><a href="https://opencv.org/">OpenCV</a></li>
     <li><a href="https://python-pillow.org/">Pillow</a></li>
     <li><a href="https://pypi.org/project/rich/">Rich</a></li>
+    <li><a href="https://pypi.org/project/python-dotenv/">Dotenv</a></li>
 </ul>
 
 <h2>Usage</h2>
@@ -56,3 +57,20 @@ image.char_ = '%'
 <pre>
 image.backc_ = '#000000'
 </pre>
+
+<h2>Environment Variables</h2>
+
+<p>The environment variables define the image path, color, image name (optional) and scale factor (optional).</p>
+<p>The path to the image file can be specified while running the python code from the terminal. (It is stored as a pathlib.Path class)</p>
+<pre>
+python3 main.py path_to_your_env_file
+</pre>
+
+<p>The format of the env file should be in this format. (Note: An example is given in the library folder)
+<pre>
+PATH_ = path_to_your_image
+IMG_NAME = name_of_your_image
+COLOR = True
+FACTOR = 1
+</pre>
+<p>The PATH_ parameter is required and COLOR defaults to False (that is, it defaults to grayscale). FACTOR defaults to 1 and IMG_NAME defaults to None. (Note: However, it has to be specified in PATH_ if None)</p>
