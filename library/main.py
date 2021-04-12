@@ -104,8 +104,8 @@ class TerminalImage():
         self.color_ = str_
         return self.color_
 
-def load_env_file():
-    load_dotenv(dotenv_path = Path(sys.argv[1]))
+def load_env_file(env_path):
+    load_dotenv(dotenv_path = Path(env_path))
     PATH_ = os.getenv('PATH_')
     IMG_NAME = os.getenv('IMG_NAME')
     COLOR = os.getenv('COLOR')
@@ -116,16 +116,21 @@ def load_env_file():
     
     return PATH_, COLOR, float(FACTOR)
 
-def function_main():
-    PATH_, COLOR, FACTOR = load_env_file()
+def function_main(env_path):
+    PATH_, COLOR, FACTOR = load_env_file(env_path = env_path)
     imag = TerminalImage(PATH_)
 
     if COLOR == 'True': return imag.color(orientation = 'HEIGHT', details = False, factor = FACTOR)
     else: return imag.grayscale(orientation = 'HEIGHT', factor = FACTOR)
 
+def function_main_mnl(PATH_, COLOR, FACTOR):
+    imag = TerminalImage(PATH_)
+
+    if COLOR == 'True': return imag.color(orientation = 'HEIGHT', details = False, factor = FACTOR)
+    else: return imag.grayscale(orientation = 'HEIGHT', factor = FACTOR)
 
 if __name__ == '__main__':
-    PATH_, COLOR, FACTOR = load_env_file()
+    PATH_, COLOR, FACTOR = load_env_file(env_path = sys.argv[1])
 
     # THe path specified in the environment variables file
     imag = TerminalImage(PATH_)
