@@ -21,7 +21,7 @@ image_text = image.select_profile(False).split('\n')
 
 details = []
 with open('details.txt', 'r') as handle: 
-    details = ['\t\t' + line_.replace('\n', '') for line_ in handle.readlines()]
+    details = ['\t\t' + line_.replace('\n', '') for line_ in handle.readlines() if line_.strip()]
 
 os.system('clear')
 
@@ -34,9 +34,8 @@ if len(details) <= (len(image_text) // 2) - 1:
         details_.append('')
     details = details_[:len(details_) - 1]
 
-# Doesn't quite work ...  remember to fix later
-
 sps_length = (len(image_text) - len(details)) // 2
+
 for j in range(sps_length): console.print(image_text[j])
 
 for i in range(sps_length, len(image_text) - sps_length):
