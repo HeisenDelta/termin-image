@@ -60,7 +60,7 @@ class TerminalImage():
 
         return self.grayscale_
 
-    def color(self, details = True, factor = 1, orientation = ['WIDTH', 'HEIGHT']):
+    def color(self, details = True, factor = 1.0, orientation = ['WIDTH', 'HEIGHT']):
 
         image = cv2.imread(self.path_, cv2.IMREAD_UNCHANGED)
         imgSize = (image.shape[1], image.shape[0])
@@ -104,21 +104,33 @@ class TerminalImage():
         self.color_ = str_
         return self.color_
 
-
-if __name__ == '__main__':
-
+def load_env_file():
     load_dotenv(dotenv_path = Path(sys.argv[1]))
     PATH_ = os.getenv('PATH_')
     IMG_NAME = os.getenv('IMG_NAME')
     COLOR = os.getenv('COLOR')
+    FACTOR = os.getenv('FACTOR')
 
     if not PATH_ and not IMG_NAME: raise FileNotFoundError('Path is not defined')
     if IMG_NAME: PATH_ += IMG_NAME
+    
+    return PATH_, COLOR, float(FACTOR)
 
-    # THe path specified in the environment file
+def function_main():
+    PATH_, COLOR, FACTOR = load_env_file()
+    imag = TerminalImage(PATH_)
+
+    if COLOR == 'True': return imag.color(orientation = 'HEIGHT', details = False, factor = FACTOR)
+    else: return imag.grayscale(orientation = 'HEIGHT', factor = FACTOR)
+
+
+if __name__ == '__main__':
+    PATH_, COLOR, FACTOR = load_env_file()
+
+    # THe path specified in the environment variables file
     imag = TerminalImage(PATH_)
 
     os.system('clear')
 
     if COLOR == 'True': console.print(imag.color(orientation = 'HEIGHT', details = False, factor = 0.5))
-    else: console.print(imag.grayscale(orientation = 'HEIGHT', factor = 0.5))
+    else: console.print(imag.grayscale(orientation = 'HEIGHT', factor = FACTOR))

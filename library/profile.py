@@ -1,4 +1,3 @@
-from main import TerminalImage
 import sys
 import os
 import time
@@ -8,6 +7,8 @@ from pathlib import Path
 from rich.prompt import Prompt
 from rich.console import Console
 console = Console()
+
+from main import TerminalImage, load_env_file
 
 class ProfileImage():
 
@@ -104,19 +105,28 @@ class ProfileImage():
 
             time.sleep(0.3)
 
-if __name__ == '__main__':
+# Don't integreate this into the API yet
+# Make a new class function to specify position attributes
+# Use that in the API and define them as REST API factors
 
-    load_dotenv(dotenv_path = Path(sys.argv[1]))
-    PATH_ = os.getenv('PATH_')
-    IMG_NAME = os.getenv('IMG_NAME')
-    COLOR = os.getenv('COLOR')
-    FACTOR = os.getenv('FACTOR')
-
-    if not PATH_ and not IMG_NAME: raise FileNotFoundError('Path is not defined')
-    if IMG_NAME: PATH_ += IMG_NAME
+def function_profile():
+    PATH_, COLOR, FACTOR = load_env_file()
 
     try:
-        try: image = ProfileImage(PATH_, factor = float(FACTOR))
+        try: image = ProfileImage(PATH_, factor = FACTOR)
+        except IndexError: image = ProfileImage(PATH_)
+
+        if COLOR == 'True': return image.select_profile(False)
+        else: return image.select_profile(True)
+
+    except IndexError: pass
+
+if __name__ == '__main__':
+
+    PATH_, COLOR, FACTOR = load_env_file()
+
+    try:
+        try: image = ProfileImage(PATH_, factor = FACTOR)
         except IndexError: image = ProfileImage(PATH_)
 
         os.system('clear')

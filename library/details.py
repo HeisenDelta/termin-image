@@ -2,17 +2,13 @@ import sys
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-from profile import ProfileImage
 from rich.console import Console
 console = Console()
 
-load_dotenv(dotenv_path = Path(sys.argv[1]))
-PATH_ = os.getenv('PATH_')
-IMG_NAME = os.getenv('IMG_NAME')
-FACTOR = os.getenv('FACTOR')
+from profile import ProfileImage
+from main import load_env_file
 
-if not PATH_ and not IMG_NAME: raise FileNotFoundError('Path is not defined')
-if IMG_NAME: PATH_ += IMG_NAME
+PATH_, COLOR, FACTOR = load_env_file()
 
 image = ProfileImage(PATH_, float(FACTOR))
 image_text = image.select_profile(False).split('\n')
