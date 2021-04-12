@@ -50,3 +50,6 @@ __pycache__/
 
 # HTML Test files (for the README)
 test.html
+
+# Vim files
+*.swp
