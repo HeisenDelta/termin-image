@@ -117,8 +117,9 @@ def function_profile(env_path):
     if COLOR == 'True': return image.select_profile(False)
     else: return image.select_profile(True)
 
-def function_profile_api(env_path, x_offset, y_offset):
-    PATH_, COLOR, FACTOR = load_env_file()
+def function_profile_api(env_path, x_offset, y_offset, same_path, COLOR = None, FACTOR = None):
+    if same_path: PATH_ = env_path
+    else: PATH_, COLOR, FACTOR = load_env_file(env_path = env_path)
 
     image = ProfileImage(PATH_, factor = FACTOR)
     if COLOR == 'True': return image.draw_circle(10, xpos = x_offset, ypos = y_offset, grayscale = False)
