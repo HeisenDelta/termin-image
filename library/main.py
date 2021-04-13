@@ -123,19 +123,13 @@ def function_main(env_path):
     if COLOR == 'True': return imag.color(orientation = 'HEIGHT', details = False, factor = FACTOR)
     else: return imag.grayscale(orientation = 'HEIGHT', factor = FACTOR)
 
-def function_main_mnl(PATH_, COLOR, FACTOR):
+def function_main_api(PATH_, COLOR, FACTOR):
     imag = TerminalImage(PATH_)
 
     if COLOR == 'True': return imag.color(orientation = 'HEIGHT', details = False, factor = FACTOR)
     else: return imag.grayscale(orientation = 'HEIGHT', factor = FACTOR)
 
 if __name__ == '__main__':
-    PATH_, COLOR, FACTOR = load_env_file(env_path = sys.argv[1])
-
-    # THe path specified in the environment variables file
-    imag = TerminalImage(PATH_)
 
     os.system('clear')
-
-    if COLOR == 'True': console.print(imag.color(orientation = 'HEIGHT', details = False, factor = 0.5))
-    else: console.print(imag.grayscale(orientation = 'HEIGHT', factor = FACTOR))
+    console.print(function_main(env_path = sys.argv[1]))

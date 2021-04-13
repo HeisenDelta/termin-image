@@ -22,7 +22,7 @@ class ProfileImage():
         self.iwidth_ = len(self.gray_image_[0])
         self.iheight_ = len(self.gray_image_)
 
-    # Comparison between images
+    # Comparison between images (currently unused)
     def comparison(self):
         for i in range(min(len(self.color_image_), len(self.gray_image_))):
             console.print(self.color_image_[i], self.gray_image_[i])
@@ -109,28 +109,20 @@ class ProfileImage():
 # Make a new class function to specify position attributes
 # Use that in the API and define them as REST API factors
 
-def function_profile():
+def function_profile(env_path):
+    PATH_, COLOR, FACTOR = load_env_file(env_path = env_path)
+
+    image = ProfileImage(PATH_, factor = FACTOR)
+
+    if COLOR == 'True': return image.select_profile(False)
+    else: return image.select_profile(True)
+
+def function_profile_api(env_path, x_offset, y_offset):
     PATH_, COLOR, FACTOR = load_env_file()
 
-    try:
-        try: image = ProfileImage(PATH_, factor = FACTOR)
-        except IndexError: image = ProfileImage(PATH_)
+    image = ProfileImage(PATH_, factor = FACTOR)
+    if COLOR == 'True': return image.draw_circle(10, xpos = x_offset, ypos = y_offset, grayscale = False)
+    else: return image.draw_circle(10, xpos = x_offset, ypos = y_offset, grayscale = True)
 
-        if COLOR == 'True': return image.select_profile(False)
-        else: return image.select_profile(True)
 
-    except IndexError: pass
-
-if __name__ == '__main__':
-
-    PATH_, COLOR, FACTOR = load_env_file()
-
-    try:
-        try: image = ProfileImage(PATH_, factor = FACTOR)
-        except IndexError: image = ProfileImage(PATH_)
-
-        os.system('clear')
-        if COLOR == 'True': console.print(image.select_profile(False))
-        else: print(image.select_profile(True))
-
-    except IndexError: exit()
+if __name__ == '__main__': console.print(function_profile(env_path = sys.argv[1]))
