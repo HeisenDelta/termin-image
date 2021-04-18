@@ -78,13 +78,11 @@ IMG_NAME = name_of_your_image
 FACTOR = 1
 </pre>
 <ul>
-
     <li><b>PATH</b>&nbsp;- (required) specifies the path of the image directory.</li>
     <li><b>ORIENTATION</b>&nbsp; - (required) 'WIDTH' or 'HEIGHT' specifies if the image scales to terminal width or height</li>
     <li><b>COLOR</b>&nbsp; - (required) Boolean value for if the image is colored or not</li>
     <li><b>IMG_NAME</b>&nbsp; - Not required if PATH specifies the img name as well. Otherwise this will be appended to PATH</li>
     <li><b>FACTOR</b>*&nbsp; - Resizes the image width the scale factor (defaults to 1.0)</li>
-
 </ul>
 
 <h2>API</h2>
@@ -102,6 +100,7 @@ http://127.0.0.1:5000/main/mnl?img_path={}&color={}&factor={}&orient={}
 http://127.0.0.1:5000/profile/env?env_path={}
 http://127.0.0.1:5000/profile/mnl?img_path={}&x={}&y={}&color={}&factor={}
 </pre>
+<br>
 
 <table>
     <thead>
