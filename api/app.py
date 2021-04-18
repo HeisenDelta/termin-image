@@ -48,9 +48,10 @@ def route_main_mnl():
         img_path = request.args.get('img_path', None)           # Path to image file
         color = request.args.get('color', None)
         factor = request.args.get('factor', None)
+        orient = request.args.get('orient', None)
 
         return jsonify({ 
-            'output': function_main_api(img_path, color, float(factor)) 
+            'output': function_main_api(img_path, color, float(factor), orient)
         })
 
 
