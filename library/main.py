@@ -121,8 +121,8 @@ def function_main(env_path):
     PATH_, COLOR, FACTOR, ORIENT = load_env_file(env_path = env_path)
     imag = TerminalImage(PATH_)
 
-    if COLOR == 'True': return imag.color(orientation = ORIENT.upper(), details = False, factor = FACTOR)
-    else: return imag.grayscale(orientation = ORIENT.upper(), factor = FACTOR)
+    if COLOR == 'True': return imag.color(orientation = ORIENT.upper(), details = False, factor = FACTOR), True
+    else: return imag.grayscale(orientation = ORIENT.upper(), factor = FACTOR), False
 
 def function_main_api(PATH_, COLOR, FACTOR, ORIENT):
     imag = TerminalImage(PATH_)
@@ -133,4 +133,6 @@ def function_main_api(PATH_, COLOR, FACTOR, ORIENT):
 if __name__ == '__main__':
 
     os.system('clear')
-    console.print(function_main(env_path = sys.argv[1]))
+    print_str, colored = function_main(env_path = sys.argv[1])
+    if colored: console.print(print_str)
+    else: print(print_str)

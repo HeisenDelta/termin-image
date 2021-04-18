@@ -30,11 +30,12 @@ def main(): return jsonify({ 'output': 'Head over to /api/ to get the strings' }
 def route_main_env():
     if request.method == 'GET':
         env_path = request.args.get('env_path', None)           # Path to env file
+        output, def_ = function_main(env_path)
 
         # Added error handling if path is not defined
         try: 
             return jsonify({ 
-                'output': function_main(env_path) 
+                'output': output
             })
 
         except FileNotFoundError:
