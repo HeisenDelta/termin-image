@@ -79,25 +79,25 @@ class ProfileImage():
                     else: 
                         if cur_pos[0] + int(command[1]) > self.iwidth_ - 41: print('Too high')
                         else: cur_pos[0] += int(command[1])
+                        
                 elif command[0] == 'LSHIFT':
                     if int(command[1]) < 1: print('Invalid number')
                     else: 
                         if cur_pos[0] - int(command[1]) < 0: print('Too high')
                         else: cur_pos[0] -= int(command[1])
+
                 elif command[0] == 'DSHIFT':
                     if int(command[1]) < 1: print('Invalid number')
                     else:
                         if cur_pos[1] + int(command[1]) > self.iheight_ - 41: print('Too high')
                         else: cur_pos[1] += int(command[1])
+
                 elif command[0] == 'USHIFT':
                     if int(command[1]) < 1: print('Invalid number')
                     else:
                         if cur_pos[1] - int(command[1]) < 0: print('Too high')
                         else: cur_pos[1] -= int(command[1])
-                # elif command[0] == 'WRITE':
-                    # with open('profile.txt', 'w') as write_file:
-                        # write_file.write(self.draw_circle(10, xpos = cur_pos[0], ypos = cur_pos[1]))
-                        # write_file.close()
+
                 elif command[0] == 'QUIT': 
                     os.system('clear')
                     return self.draw_circle(10, xpos = cur_pos[0], ypos = cur_pos[1], grayscale = g_)
@@ -110,7 +110,7 @@ class ProfileImage():
 # Use that in the API and define them as REST API factors
 
 def function_profile(env_path):
-    PATH_, COLOR, FACTOR = load_env_file(env_path = env_path)
+    PATH_, COLOR, FACTOR, ORIENT = load_env_file(env_path = env_path)
 
     image = ProfileImage(PATH_, factor = FACTOR)
 

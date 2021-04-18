@@ -10,7 +10,7 @@ from main import load_env_file
 
 def function_details(det_file, env_path, mnl = True, x_offset = 0, y_offset = 0, color = 'True', factor = 1):
 
-    PATH_, COLOR, FACTOR = load_env_file(env_path = env_path)
+    PATH_, COLOR, FACTOR, ORIENT = load_env_file(env_path = env_path)
 
     image = ProfileImage(PATH_, float(FACTOR))
     if mnl: image_text = image.select_profile(False).split('\n')

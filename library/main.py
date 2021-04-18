@@ -110,24 +110,25 @@ def load_env_file(env_path):
     IMG_NAME = os.getenv('IMG_NAME')
     COLOR = os.getenv('COLOR')
     FACTOR = os.getenv('FACTOR')
+    ORIENT_ = os.getenv('ORIENTATION')
 
     if not PATH_ and not IMG_NAME: raise FileNotFoundError('Path is not defined')
     if IMG_NAME: PATH_ += IMG_NAME
     
-    return PATH_, COLOR, float(FACTOR)
+    return PATH_, COLOR, float(FACTOR), ORIENT_
 
 def function_main(env_path):
-    PATH_, COLOR, FACTOR = load_env_file(env_path = env_path)
+    PATH_, COLOR, FACTOR, ORIENT = load_env_file(env_path = env_path)
     imag = TerminalImage(PATH_)
 
-    if COLOR == 'True': return imag.color(orientation = 'HEIGHT', details = False, factor = FACTOR)
-    else: return imag.grayscale(orientation = 'HEIGHT', factor = FACTOR)
+    if COLOR == 'True': return imag.color(orientation = ORIENT.upper(), details = False, factor = FACTOR)
+    else: return imag.grayscale(orientation = ORIENT.upper(), factor = FACTOR)
 
-def function_main_api(PATH_, COLOR, FACTOR):
+def function_main_api(PATH_, COLOR, FACTOR, ORIENT):
     imag = TerminalImage(PATH_)
 
-    if COLOR == 'True': return imag.color(orientation = 'HEIGHT', details = False, factor = FACTOR)
-    else: return imag.grayscale(orientation = 'HEIGHT', factor = FACTOR)
+    if COLOR == 'True': return imag.color(orientation = ORIENT.upper(), details = False, factor = FACTOR)
+    else: return imag.grayscale(orientation = ORIENT.upper(), factor = FACTOR)
 
 if __name__ == '__main__':
 
