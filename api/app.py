@@ -20,12 +20,13 @@ except (ModuleNotFoundError, ImportError):
     from main import function_main, function_main_api
     from profile import function_profile_api
 
+
 app = Flask(__name__)
 
 @app.route('/')
 def main(): return jsonify({ 'output': 'Head over to /api/ to get the strings' })
 
-@app.route('/main/env/', methods = ['GET', 'POST'])
+@app.route('/main/env', methods = ['GET', 'POST'])
 def route_main_env():
     if request.method == 'GET':
         env_path = request.args.get('env_path', None)           # Path to env file
@@ -42,7 +43,7 @@ def route_main_env():
             })
 
 
-@app.route('/main/mnl/', methods = ['GET', 'POST'])
+@app.route('/main/mnl', methods = ['GET', 'POST'])
 def route_main_mnl():
     if request.method == 'GET':
         img_path = request.args.get('img_path', None)           # Path to image file
@@ -55,7 +56,7 @@ def route_main_mnl():
         })
 
 
-@app.route('/profile/env/', methods = ['GET', 'POST'])
+@app.route('/profile/env', methods = ['GET', 'POST'])
 def route_profile_env():
     if request.method == 'GET':
         env_path = request.args.get('env_path', None)           # Path to env file
@@ -69,7 +70,7 @@ def route_profile_env():
         })
 
 
-@app.route('/profile/mnl/', methods = ['GET', 'POST'])
+@app.route('/profile/mnl', methods = ['GET', 'POST'])
 def route_profile_mnl():
     if request.method == 'GET': 
         img_path = request.args.get('img_path', None)           # Path to image file
@@ -85,7 +86,7 @@ def route_profile_mnl():
         })
 
 
-@app.route('/details/env/', methods = ['GET', 'POST'])
+@app.route('/details/env', methods = ['GET', 'POST'])
 def route_details_mnl():
     if request.method == 'GET':
         env_path = request.args.get('env_path', None)           # Path to env file
