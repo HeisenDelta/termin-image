@@ -1,7 +1,7 @@
 # Termin Image
 
-[![Issues](https://img.shields.io/github/issues/HeisenDelta/termin-image)]
-[![License](https://img.shields.io/github/license/HeisenDelta/termin-image)]
+![Issues](https://img.shields.io/github/issues/HeisenDelta/termin-image)
+![License](https://img.shields.io/github/license/HeisenDelta/termin-image)
 
 ##  Description
 
