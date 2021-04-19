@@ -10,13 +10,19 @@ Note: Color images will only work in the Linux, Mac and new Windows Terminal.
 
 ##  Libraries
 
-Termin Image is built using Python 3x and all the external libraries listed below are required to render the images
+Termin Image is built using Python 3x and all the external libraries listed below are required to render the images:
 * [OpenCV](https://opencv.org/)
 * [Pillow](https://python-pillow.org/)
 * [Rich](https://pypi.org/project/rich/)
 * [Dotenv](https://pypi.org/project/python-dotenv/)
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
-* [Numba](http://numba.pydata.org/) (Experimental
+* [Numba](http://numba.pydata.org/) (Experimental)
+
+*Note: Dotenv is required to extract parameters from .env files. 
+OpenCV and Rich are required to render colored images.
+Pillow is required to render grayscale images.
+Flask is required to run the REST API on localhost.
+Numba is an experimental feature and hasn't been implemented in the library folder*
 
 ## Usage
 
