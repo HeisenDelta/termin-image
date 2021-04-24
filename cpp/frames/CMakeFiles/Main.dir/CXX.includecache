@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/heisendelta/Documents/gits/termin-image/cpp/frames/main.cpp
+iostream
+-
+sys/ioctl.h
+-
+unistd.h
+-
+errno.h
+-
+opencv2/opencv.hpp
+-
+opencv2/imgcodecs.hpp
+-
+opencv2/highgui/highgui.hpp
+-
+
