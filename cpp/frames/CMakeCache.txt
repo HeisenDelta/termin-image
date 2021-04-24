@@ -145,7 +145,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=HelloWorld
+CMAKE_PROJECT_NAME:STATIC=TerminImage
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -217,6 +217,12 @@ HelloWorld_SOURCE_DIR:STATIC=/home/heisendelta/Documents/gits/termin-image/cpp/f
 
 //The directory containing a CMake configuration file for OpenCV.
 OpenCV_DIR:PATH=/usr/local/lib/cmake/opencv4
+
+//Value Computed by CMake
+TerminImage_BINARY_DIR:STATIC=/home/heisendelta/Documents/gits/termin-image/cpp/frames
+
+//Value Computed by CMake
+TerminImage_SOURCE_DIR:STATIC=/home/heisendelta/Documents/gits/termin-image/cpp/frames
 
 
 ########################

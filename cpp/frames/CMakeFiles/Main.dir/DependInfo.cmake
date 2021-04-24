@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/heisendelta/Documents/gits/termin-image/cpp/frames/main.cpp" "/home/heisendelta/Documents/gits/termin-image/cpp/frames/CMakeFiles/Main.dir/main.cpp.o"
+  "/home/heisendelta/Documents/gits/termin-image/cpp/frames/scripts/main.cpp" "/home/heisendelta/Documents/gits/termin-image/cpp/frames/CMakeFiles/Main.dir/scripts/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

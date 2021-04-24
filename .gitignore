@@ -45,7 +45,6 @@ Temporary Items
 sftp-config.json
 
 # Folders
-tests/
 __pycache__/
 
 # HTML Test files (for the README)
@@ -53,3 +52,5 @@ test.html
 
 # Vim files
 *.swp
+
+# (some) Cmake folders

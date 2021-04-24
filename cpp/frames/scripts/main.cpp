@@ -53,7 +53,7 @@ int main( void ) {
     ) cerr << "Terminal Size function failed\n";
 
     // Read the image
-    Mat image = imread("/home/heisendelta/Pictures/color.jpg", IMREAD_COLOR);
+    Mat image = imread("/home/heisendelta/Pictures/me1.jpg", IMREAD_COLOR);
     if (image.empty()) {
         cerr << "Image not found\n";
         return 0;
