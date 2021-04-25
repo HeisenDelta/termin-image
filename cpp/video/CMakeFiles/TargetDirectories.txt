@@ -1,0 +1,3 @@
+/home/heisendelta/Documents/gits/termin-image/cpp/video/CMakeFiles/rebuild_cache.dir
+/home/heisendelta/Documents/gits/termin-image/cpp/video/CMakeFiles/edit_cache.dir
+/home/heisendelta/Documents/gits/termin-image/cpp/video/CMakeFiles/Video.dir

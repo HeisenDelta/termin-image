@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/heisendelta/Documents/gits/termin-image/cpp/frames/scripts/main.hpp
+iostream
+-
+sys/ioctl.h
+-
+unistd.h
+-
+errno.h
+-
+opencv2/opencv.hpp
+-
+opencv2/imgcodecs.hpp
+-
+opencv2/highgui/highgui.hpp
+-
+
+/home/heisendelta/Documents/gits/termin-image/cpp/video/scripts/video.cpp
+../../frames/scripts/main.hpp
+/home/heisendelta/Documents/gits/termin-image/cpp/frames/scripts/main.hpp
+iostream
+-
+thread
+-
+chrono
+-
+opencv2/opencv.hpp
+-
+
