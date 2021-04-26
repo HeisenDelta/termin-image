@@ -111,3 +111,23 @@ http://127.0.0.1:5000/profile/mnl?img_path={}&x={}&y={}&color={}&factor={}
 | orient    | ('HEIGHT', 'WIDTH') 'HEIGHT' for if the image is scaled by terminal height or 'WIDTH' by terminal width |
 | x         | (class unsigned int) The x_offset by which the image is shifted to the right in the profile frame       |
 | y         | (class unsigned int) The y_offset by which the image is shifted down in the profile frame               |
+
+## C++
+Termin-image also has support as a C++ library. Use the file ``cpp/trmcv.hpp`` as the header file and ``trmcv`` as the namespace.
+Below is some sample code to render images and video.
+```cpp
+#include <trmcv.hpp>
+#include <opencv2/opencv.hpp>
+
+int main( void ) {
+
+    // Rendering image
+    Mat image = imread("path_to_your_image", IMREAD_COLOR);
+    trmcv::render_image(image, true);
+
+    // Rendering video
+    VideoCapture cap("path_to_your_video");
+    trmcv::render_video(cap, 60);
+
+}
+```
