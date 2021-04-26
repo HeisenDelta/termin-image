@@ -54,3 +54,4 @@ test.html
 *.swp
 
 # (some) Cmake folders
+CMakeFiles/
