@@ -66,16 +66,17 @@ class VideoShow:
         self.stopped = False
     
     def start(self):
-        Thread(target = self.show, args = ()).start()
+        Thread(target = self.show, args = (), daemon = True).start()
         return self
 
     def show(self):
         while not self.stopped:
 
-            # cv2.imshow("Video", self.frame)
+            cv2.imshow("Video", self.frame)
 
-            console.print(render_image_color(self.frame, orientation = 'WIDTH'))
-            time.sleep(1 / frame_rate)
+            # os.system('clear')
+            # console.print(render_image_color(self.frame, orientation = 'WIDTH'))
+            # time.sleep(1)
 
             if cv2.waitKey(1) == ord("q"): self.stopped = True
             # if KeyboardInterrupt: self.stopped = True
