@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/heisendelta/Documents/gits/termin-image/cpp/video
+CMAKE_SOURCE_DIR = /home/heisendelta/Documents/gits/termin-image/cpp/color_image
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/heisendelta/Documents/gits/termin-image/cpp/video
+CMAKE_BINARY_DIR = /home/heisendelta/Documents/gits/termin-image/cpp/color_image
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/heisendelta/Documents/gits/termin-image/cpp/video/CMakeFiles /home/heisendelta/Documents/gits/termin-image/cpp/video/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/heisendelta/Documents/gits/termin-image/cpp/color_image/CMakeFiles /home/heisendelta/Documents/gits/termin-image/cpp/color_image/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/heisendelta/Documents/gits/termin-image/cpp/video/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/heisendelta/Documents/gits/termin-image/cpp/color_image/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,44 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Video
+# Target rules for targets named Main
 
 # Build rule for target.
-Video: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Video
-.PHONY : Video
+Main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Main
+.PHONY : Main
 
 # fast build rule for target.
-Video/fast:
-	$(MAKE) -f CMakeFiles/Video.dir/build.make CMakeFiles/Video.dir/build
-.PHONY : Video/fast
+Main/fast:
+	$(MAKE) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/build
+.PHONY : Main/fast
 
-scripts/video.o: scripts/video.cpp.o
+main.o: main.cpp.o
 
-.PHONY : scripts/video.o
+.PHONY : main.o
 
 # target to build an object file
-scripts/video.cpp.o:
-	$(MAKE) -f CMakeFiles/Video.dir/build.make CMakeFiles/Video.dir/scripts/video.cpp.o
-.PHONY : scripts/video.cpp.o
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-scripts/video.i: scripts/video.cpp.i
+main.i: main.cpp.i
 
-.PHONY : scripts/video.i
+.PHONY : main.i
 
 # target to preprocess a source file
-scripts/video.cpp.i:
-	$(MAKE) -f CMakeFiles/Video.dir/build.make CMakeFiles/Video.dir/scripts/video.cpp.i
-.PHONY : scripts/video.cpp.i
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-scripts/video.s: scripts/video.cpp.s
+main.s: main.cpp.s
 
-.PHONY : scripts/video.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-scripts/video.cpp.s:
-	$(MAKE) -f CMakeFiles/Video.dir/build.make CMakeFiles/Video.dir/scripts/video.cpp.s
-.PHONY : scripts/video.cpp.s
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -158,10 +158,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... Video"
-	@echo "... scripts/video.o"
-	@echo "... scripts/video.i"
-	@echo "... scripts/video.s"
+	@echo "... Main"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

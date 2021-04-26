@@ -1,4 +1,4 @@
-# Install script for directory: /home/heisendelta/Documents/gits/termin-image/cpp/video
+# Install script for directory: /home/heisendelta/Documents/gits/termin-image/cpp/color_video
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/heisendelta/Documents/gits/termin-image/cpp/video/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/heisendelta/Documents/gits/termin-image/cpp/color_video/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

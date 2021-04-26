@@ -1,3 +1,0 @@
-/home/heisendelta/Documents/gits/termin-image/cpp/frames/CMakeFiles/rebuild_cache.dir
-/home/heisendelta/Documents/gits/termin-image/cpp/frames/CMakeFiles/edit_cache.dir
-/home/heisendelta/Documents/gits/termin-image/cpp/frames/CMakeFiles/Main.dir

@@ -1,4 +1,4 @@
-#include "../../frames/scripts/main.hpp"
+#include "../color_image/main.hpp"
 #include <iostream>
 #include <thread>
 #include <chrono>
