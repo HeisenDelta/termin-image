@@ -7,6 +7,10 @@
 #IncludeRegexTransform: 
 
 /home/heisendelta/Documents/gits/termin-image/cpp/frames/scripts/main.cpp
+main.hpp
+/home/heisendelta/Documents/gits/termin-image/cpp/frames/scripts/main.hpp
+
+/home/heisendelta/Documents/gits/termin-image/cpp/frames/scripts/main.hpp
 iostream
 -
 sys/ioctl.h

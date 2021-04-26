@@ -85,8 +85,11 @@ namespace trmcv {
         // imshow(window_name, image);
         // waitKey(0);
 
-        // FUTURE: center the image if taken by height
         for (int y = 0; y < image.rows; y++) {
+
+            string space((int) ((t_height - image.cols) / 2), ' ');
+            cout << space;
+
             for (int x = 0; x < image.cols; x++) {
 
                 RGBValue &rgb = image.ptr<RGBValue>(y)[x];
@@ -100,7 +103,7 @@ namespace trmcv {
                 // cout << '0';
 
             }
-            cout << '\n';
+            cout << space << '\n';
         }
         return 0;
     }
