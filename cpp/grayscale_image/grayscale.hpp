@@ -35,8 +35,15 @@ static int get_terminal_size(const int fd, int *const rows, int *const cols) {
 
 }
 
+int convert_to_grayscale(int red, int green, int blue) {
+
+    int bnw = int(red * 0.299 + green * 0.587 + blue * 0.144) & 0xff;
+    return (bnw << 16) | (bnw << 8) | bnw;
+
+}
+
 namespace gcvimg {
-    static int render_image_grayscale(Mat image, bool BY_HEIGHT) {
+    static int render_image_grayscale(Mat image, bool BY_HEIGHT, bool chars) {
 
         // Get Terminal width and height
         int t_width, t_height;
@@ -44,7 +51,10 @@ namespace gcvimg {
             get_terminal_size(STDIN_FILENO, &t_width, &t_height) &&
             get_terminal_size(STDOUT_FILENO, &t_width, &t_height) &&
             get_terminal_size(STDERR_FILENO, &t_width, &t_height)
-        ) cerr << "Terminal Size function failed\n";
+        ) {
+            cerr << "Terminal Size function failed\n";
+            return 0;
+        }
 
         // Read the image
         if (image.empty()) {
@@ -62,11 +72,6 @@ namespace gcvimg {
 
         // Change INTER_AREA to INTER_LINEAR for accentuated pixels
 
-        const string window_name("image_window");
-        namedWindow(window_name);
-        imshow(window_name, image);
-        waitKey(0);
-
         for (int y = 0; y < image.rows; ++y) {
 
             string space((int) ((t_height - image.cols) / 2), ' ');
@@ -75,13 +80,23 @@ namespace gcvimg {
             for (int x = 0; x < image.cols; ++x) {
 
                 RGBValue &rgb = image.ptr<RGBValue>(y)[x];
+                int converted_rgb = convert_to_grayscale((int) rgb.red, (int) rgb.green, (int) rgb.blue);
+                
+                if (chars) {
 
-                int sum = rgb.red + rgb.green + rgb.blue;
-                cout << spectrum[(int) floor(sum / part_length)];
+                    int sum = rgb.red + rgb.green + rgb.blue;
+                    cout << spectrum[(int) floor(sum / part_length)];
+
+                } else {
+
+                    int red_ = converted_rgb >> 16;
+                    int green_ = (converted_rgb >> 8) & 0xff;
+                    int blue_ = converted_rgb & 0xff;
+                    cout << "\x1b[38;2;" << to_string(red_) << ";" << to_string(green_) << ";" << to_string(blue_) << "m0";
+                }
 
             }
             cout << space << '\n';
-
         }
 
         return 0;
