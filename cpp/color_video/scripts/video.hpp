@@ -1,4 +1,4 @@
-#include "../color_image/main.hpp"
+#include "../../color_image/scripts/main.hpp"
 #include <iostream>
 #include <thread>
 #include <chrono>
@@ -14,7 +14,7 @@ using namespace std::chrono;
 using namespace std::chrono_literals;
 
 namespace cvvid {
-    static int render_video(VideoCapture cap, const int frame_rate) {
+    static int render_video(VideoCapture cap, const int frame_rate) {   // Frame rate only corresponds to the delay between frames 
 
         Mat frame;
         if (!cap.isOpened()) {
@@ -29,7 +29,7 @@ namespace cvvid {
 
             // imshow("Frame", frame);
             cvimg::render_image(frame, true);
-            cout << "\x1B[3J\x1B[H";                                    // "\x1B[2J\x1B[H" doesn't work that well
+            cout << "\x1B[3J\x1B[H";                                     // "\x1B[2J\x1B[H" doesn't work that well
 
             // Frame rate is only used for delay between frames
             this_thread::sleep_for(milliseconds(1000 / frame_rate));

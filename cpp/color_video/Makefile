@@ -111,44 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Video
+# Target rules for targets named Main
 
 # Build rule for target.
-Video: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Video
-.PHONY : Video
+Main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Main
+.PHONY : Main
 
 # fast build rule for target.
-Video/fast:
-	$(MAKE) -f CMakeFiles/Video.dir/build.make CMakeFiles/Video.dir/build
-.PHONY : Video/fast
+Main/fast:
+	$(MAKE) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/build
+.PHONY : Main/fast
 
-video.o: video.cpp.o
+scripts/video.o: scripts/video.cpp.o
 
-.PHONY : video.o
+.PHONY : scripts/video.o
 
 # target to build an object file
-video.cpp.o:
-	$(MAKE) -f CMakeFiles/Video.dir/build.make CMakeFiles/Video.dir/video.cpp.o
-.PHONY : video.cpp.o
+scripts/video.cpp.o:
+	$(MAKE) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/scripts/video.cpp.o
+.PHONY : scripts/video.cpp.o
 
-video.i: video.cpp.i
+scripts/video.i: scripts/video.cpp.i
 
-.PHONY : video.i
+.PHONY : scripts/video.i
 
 # target to preprocess a source file
-video.cpp.i:
-	$(MAKE) -f CMakeFiles/Video.dir/build.make CMakeFiles/Video.dir/video.cpp.i
-.PHONY : video.cpp.i
+scripts/video.cpp.i:
+	$(MAKE) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/scripts/video.cpp.i
+.PHONY : scripts/video.cpp.i
 
-video.s: video.cpp.s
+scripts/video.s: scripts/video.cpp.s
 
-.PHONY : video.s
+.PHONY : scripts/video.s
 
 # target to generate assembly for a file
-video.cpp.s:
-	$(MAKE) -f CMakeFiles/Video.dir/build.make CMakeFiles/Video.dir/video.cpp.s
-.PHONY : video.cpp.s
+scripts/video.cpp.s:
+	$(MAKE) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/scripts/video.cpp.s
+.PHONY : scripts/video.cpp.s
 
 # Help Target
 help:
@@ -158,10 +158,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... Video"
-	@echo "... video.o"
-	@echo "... video.i"
-	@echo "... video.s"
+	@echo "... Main"
+	@echo "... scripts/video.o"
+	@echo "... scripts/video.i"
+	@echo "... scripts/video.s"
 .PHONY : help
 
 

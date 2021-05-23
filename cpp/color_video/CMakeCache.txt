@@ -145,7 +145,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=TerminImageVideo
+CMAKE_PROJECT_NAME:STATIC=TerminImage_ColorVideo
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -217,6 +217,12 @@ TerminImageVideo_BINARY_DIR:STATIC=/home/heisendelta/Documents/gits/termin-image
 
 //Value Computed by CMake
 TerminImageVideo_SOURCE_DIR:STATIC=/home/heisendelta/Documents/gits/termin-image/cpp/color_video
+
+//Value Computed by CMake
+TerminImage_ColorVideo_BINARY_DIR:STATIC=/home/heisendelta/Documents/gits/termin-image/cpp/color_video
+
+//Value Computed by CMake
+TerminImage_ColorVideo_SOURCE_DIR:STATIC=/home/heisendelta/Documents/gits/termin-image/cpp/color_video
 
 
 ########################
