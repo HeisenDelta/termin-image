@@ -12,7 +12,7 @@ int run_code() {
 
     Mat image = imread("/home/heisendelta/Pictures/Avalon.png", IMREAD_COLOR);
     // cvimg::render_image(image, true);
-    cv_opt::render_image_opt(image, true, 0);
+    cv_opt::render_image_opt(image, true, 0, 1.0);
 
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);

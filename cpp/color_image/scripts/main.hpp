@@ -43,7 +43,7 @@ unsigned long convert_to_rgb(int red, int green, int blue) {
 }
 
 namespace cvimg {
-    static int render_image(Mat image, bool BY_HEIGHT) {
+    static int render_image(Mat image, bool BY_HEIGHT, float brt = 1.0) {
 
         // Get Terminal width and height
         int t_width, t_height;
@@ -88,7 +88,7 @@ namespace cvimg {
                 RGBValue &rgb = image.ptr<RGBValue>(y)[x];
 
                 unsigned long hex_code = convert_to_rgb(rgb.red, rgb.green, rgb.blue);
-                cout << "\x1b[38;2;" << to_string(rgb.red) << ";" << to_string(rgb.green) << ";" << to_string(rgb.blue) << "m0";
+                cout << "\x1b[38;2;" << to_string(rgb.red * brt) << ";" << to_string(rgb.green * brt) << ";" << to_string(rgb.blue * brt) << "m0";
 
                 // Vec3b &pixel_val = image.at<Vec3b>(y, x);
                 // cout << "\x1b[38;2;" << to_string(pixel_val[2]) << ";" << to_string(pixel_val[1]) << ";" << to_string(pixel_val[0]) << "m0";
