@@ -8,6 +8,6 @@ int main( void ) {
     if (path == "default") path = "/home/heisendelta/Videos/aot.mp4";
 
     VideoCapture cap(path);
-    cvvid::render_video(cap, 60);
+    cvvid::render_video(cap, 60, 0.15);
 
 }
