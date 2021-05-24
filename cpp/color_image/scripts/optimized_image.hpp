@@ -42,61 +42,72 @@ unsigned long convert_to_rgb(int red, int green, int blue) {
 
 }
 
-void rgb_to_hsl(int red, int green, int blue, int &hue, int &sat, int &light) {
+void rgb_to_hsl(uchar red, uchar green, uchar blue, float &hue, float &sat, float &light) {
 
-    float r_fl = red / 255.0;
-    float g_fl = green / 255.0;
-    float b_fl = blue / 255.0;
+    float R = (int) red / 255.0;
+    float G = (int) green / 255.0;
+    float B = (int) blue / 255.0;
 
-    float c_min = min(r_fl, min(g_fl, b_fl));
-    float c_max = max(r_fl, max(g_fl, b_fl));
-    light = 50 * (c_min + c_max);
-
-    if (c_min == c_max) {
-        hue, sat = 0;
+    float max_ = max(R, max(G, B));
+    float min_ = min(R, min(G, B));
+    float diff = max_ - min_;
+    light = (max_ + min_) / 2;
+    
+    if (abs(diff) < 0.0001) {
+        sat = 0;
+        hue = 0;                                                                            // Technically it's undefined
         return;
     }
-    else if (light < 50) sat = 100 * (c_max - c_min) / (c_max + c_min);
-    else sat = 100 * (c_max - c_min) / (2.0 - c_max - c_min);
+    if (light <= 0.5) sat = diff / (max_ + min_);
+    else sat = diff / (2 - max_ - min_);
 
-    if (c_max == r_fl) hue = 60 * (g_fl - b_fl) / (c_max - c_min);
-    if (c_max == g_fl) hue = 60 * (b_fl - r_fl) / (c_max - c_min) + 120;
-    if (c_max == b_fl) hue = 60 * (r_fl - g_fl) / (c_max - c_min) + 240;
+    float r_dist = (max_ - R) / diff;
+    float g_dist = (max_ - G) / diff;
+    float b_dist = (max_ - B) / diff;
+
+    if (R == max_) hue = b_dist - g_dist;
+    else if (G == max_) hue = 2 + r_dist - b_dist;
+    else hue = 4 + g_dist - r_dist;
+
+    hue *= 60;
     if (hue < 0) hue += 360;
 
 }
 
-float hue_to_rgb(int p, int q, int t) {
+float hue_to_rgb(float q1, float q2, float hue) {
 
-    if (t < 0) t += 1;
-    if (t > 1) t += 1;
-    if (t < 1/6) return p + (q - p) * 6 * t;
-    if (t < 1/2) return q;
-    if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
-    return p;
+    if (hue > 360) hue -= 360;
+    if (hue < 0) hue += 360;
+
+    if (hue < 60) return q1 + (q2 - q1) * hue / 60;
+    else if (hue < 180) return q2;
+    else if (hue < 240) return q1 + (q2 - q1) * (240 - hue) / 60;
+    else return q1;
 
 }
 
-void hsl_to_rgb(uchar &red, uchar &green, uchar &blue, int hue, int sat, int light) {
+void hsl_to_rgb(uchar &red, uchar &green, uchar &blue, float hue, float sat, float light) {
 
-    if (sat == 0) {
-        red = round(light * 255);
-        blue = round(light * 255);
-        green = round(light * 255);
+    float p1, p2;
+    if (light <= 0.5) p2 = light * (1 + sat);
+    else p2 = light + sat - light * sat;
+
+    p1 = 2 * light - p2;
+    if (sat ==  0) {
+        red = light * 255;
+        green = light * 255;
+        blue = light * 255;
     } else {
-        float q = light < 0.5 ? light * (1 + sat) : light + sat - light * sat;
-        float p = 2 * light - q;
-
-        red = round(hue_to_rgb(p, q, hue + 1/3) * 255);
-        green = round(hue_to_rgb(p, q, hue) * 255);
-        blue = round(hue_to_rgb(p, q, hue - 1/3) * 255);
+        red = hue_to_rgb(p1, p2, hue + 120) * 255;
+        green = hue_to_rgb(p1, p2, hue) * 255;
+        blue = hue_to_rgb(p1, p2, hue - 120) * 255;
     }
 
 }
 
 
 namespace cv_opt {
-    static int render_image_opt(Mat image, bool BY_HEIGHT, const float diff, int bright = 0) {
+    static int render_image_opt(Mat image, bool BY_HEIGHT, const float diff, float B = 0.0) {
 
         // Get Terminal width and height
         int t_width, t_height;
@@ -143,18 +154,20 @@ namespace cv_opt {
                 bool green_same = min_green < rgb.green && max_green > rgb.green;
                 bool blue_same = min_blue < rgb.blue && max_blue > rgb.blue;
 
-                // int hue, sat, light;
+                float hue, sat, light;
 
                 if (red_same && green_same && blue_same) {
-                    // rgb_to_hsl(last_rgb[0], last_rgb[1], last_rgb[2], hue, sat, light);
-                    // light += bright;
-                    // hsl_to_rgb(last_rgb[0], last_rgb[1], last_rgb[2], hue, sat, light);
+                    rgb_to_hsl(last_rgb[0], last_rgb[1], last_rgb[2], hue, sat, light);
+                    if (light + B > 1.0) light = 1.0;
+                    else light += B;
+                    hsl_to_rgb(last_rgb[0], last_rgb[1], last_rgb[2], hue, sat, light);
 
                     cout << "\x1b[38;2;" << to_string(last_rgb[0]) << ";" << to_string(last_rgb[1]) << ";" << to_string(last_rgb[2]) << "m0";
                 } else {
-                    // rgb_to_hsl(rgb.red, rgb.green, rgb.blue, hue, sat, light);
-                    // light += bright;
-                    // hsl_to_rgb(rgb.red, rgb.green, rgb.blue, hue, sat, light);
+                    rgb_to_hsl(rgb.red, rgb.green, rgb.blue, hue, sat, light);
+                    if (light + B > 1.0) light = 1.0;
+                    else light += B;
+                    hsl_to_rgb(rgb.red, rgb.green, rgb.blue, hue, sat, light);
 
                     cout << "\x1b[38;2;" << to_string(rgb.red) << ";" << to_string(rgb.green) << ";" << to_string(rgb.blue) << "m0";
                     last_rgb[0] = rgb.red;
