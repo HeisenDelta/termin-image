@@ -8,7 +8,63 @@
 Termin Image is an easy python library to render 2D images in the terminal in color and in grayscale.
 Note: Color images will only work in the Linux, Mac and new Windows Terminal.
 
-##  Libraries
+## C++
+
+Termin Image has switched languages from Python to C++ for its increased speed. Thus, video can now be played
+on the terminal, not just images.
+
+### Sample
+
+Clone into the repository
+```shell
+git clone https://github.com/HeisenDelta/termin-image.git
+```
+
+CMakeLists.txt
+```shell
+cmake_minimum_required(VERSION 3.1)
+project(TerminImage_ColorVideo)
+
+# Find OpenCV Modules
+find_package(OpenCV 4 REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+add_executable(Main main.cpp)
+target_link_libraries(Main ${OpenCV_LIBS})
+```
+
+main.cpp
+```cpp
+#include "cpp/termin_image.hpp"
+#include <opencv2/opencv.hpp>
+
+int main( void ) {
+    Mat image = imread("PATH_TO_YOUR_IMAGE", IMREAD_COLOR);
+    tImage::render_image_opt(image, true, 0, 0.15);
+}
+```
+
+### Functions
+
+The header file contains 3 namespaces: `tImage`, `tVideo` and `tSupport`. `tImage` and `tVideo` contain the functions
+to render image and video whereas `tSupport` contains functions used in the other 2 namespaces.
+
+Render grayscale:
+```cpp
+render_image_grayscale(image, true, false)
+```
+Params:
+* image *OpenCV Mat* is the image object rendered
+* BY_HEIGHT *bool* is if the image is rendered by the terminal's height (true) or terminal's width (false)
+* chars *bool* is if the image is rendered as black/white 0s (false) or characters (true)
+
+
+## Python
+
+The following python code has been switched over to C++. Only use the python documentation if the API is
+required or C++ isn't a viable option to render the images.
+
+###  Libraries
 
 Termin Image is built using Python 3x and all the external libraries listed below are required to render the images:
 * [OpenCV](https://opencv.org/)
@@ -18,13 +74,13 @@ Termin Image is built using Python 3x and all the external libraries listed belo
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 * [Numba](http://numba.pydata.org/) (Experimental)
 
-*Note: Dotenv is required to extract parameters from .env files. 
+Dotenv is required to extract parameters from .env files. 
 OpenCV and Rich are required to render colored images.
 Pillow is required to render grayscale images.
 Flask is required to run the REST API on localhost.
-Numba is an experimental feature and hasn't been implemented in the library folder*
+Numba is an experimental feature and hasn't been implemented in the library folder
 
-## Usage
+### Usage
 
 To use the library, first clone into the repository
 ```shell
@@ -63,7 +119,7 @@ Or you can change the background character of the image (for colored images)
 image.backc_ = '#000000'
 ```
 
-## Environment Variables
+### Environment Variables
 
 The environment variables define the image path, color, orientation, image name (optional) and scale factor (optional).
 The path to the image file can be specified while running the python code from the terminal. (It is stored as a pathlib.Path class)
@@ -86,7 +142,7 @@ FACTOR = 1
 * **IMG_NAME** - Not required if PATH specifies the img name as well. Otherwise this will be appended to PATH
 * **FACTOR** - Resizes the image width the scale factor (defaults to 1.0)
 
-## API
+### API
 As of now, api/app.py is Flask file that acts as a REST API for localhost. The syntax is listed below:
 
 ```shell
@@ -111,23 +167,3 @@ http://127.0.0.1:5000/profile/mnl?img_path={}&x={}&y={}&color={}&factor={}
 | orient    | ('HEIGHT', 'WIDTH') 'HEIGHT' for if the image is scaled by terminal height or 'WIDTH' by terminal width |
 | x         | (class unsigned int) The x_offset by which the image is shifted to the right in the profile frame       |
 | y         | (class unsigned int) The y_offset by which the image is shifted down in the profile frame               |
-
-## C++
-Termin-image also has support as a C++ library. Use the file ``cpp/trmcv.hpp`` as the header file and ``trmcv`` as the namespace.
-Below is some sample code to render images and video.
-```cpp
-#include <trmcv.hpp>
-#include <opencv2/opencv.hpp>
-
-int main( void ) {
-
-    // Rendering image
-    Mat image = imread("path_to_your_image", IMREAD_COLOR);
-    trmcv::render_image(image, true);
-
-    // Rendering video
-    VideoCapture cap("path_to_your_video");
-    trmcv::render_video(cap, 60);
-
-}
-```
