@@ -111,44 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Gray
+# Target rules for targets named Main
 
 # Build rule for target.
-Gray: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Gray
-.PHONY : Gray
+Main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Main
+.PHONY : Main
 
 # fast build rule for target.
-Gray/fast:
-	$(MAKE) -f CMakeFiles/Gray.dir/build.make CMakeFiles/Gray.dir/build
-.PHONY : Gray/fast
+Main/fast:
+	$(MAKE) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/build
+.PHONY : Main/fast
 
-grayscale.o: grayscale.cpp.o
+scripts/grayscale.o: scripts/grayscale.cpp.o
 
-.PHONY : grayscale.o
+.PHONY : scripts/grayscale.o
 
 # target to build an object file
-grayscale.cpp.o:
-	$(MAKE) -f CMakeFiles/Gray.dir/build.make CMakeFiles/Gray.dir/grayscale.cpp.o
-.PHONY : grayscale.cpp.o
+scripts/grayscale.cpp.o:
+	$(MAKE) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/scripts/grayscale.cpp.o
+.PHONY : scripts/grayscale.cpp.o
 
-grayscale.i: grayscale.cpp.i
+scripts/grayscale.i: scripts/grayscale.cpp.i
 
-.PHONY : grayscale.i
+.PHONY : scripts/grayscale.i
 
 # target to preprocess a source file
-grayscale.cpp.i:
-	$(MAKE) -f CMakeFiles/Gray.dir/build.make CMakeFiles/Gray.dir/grayscale.cpp.i
-.PHONY : grayscale.cpp.i
+scripts/grayscale.cpp.i:
+	$(MAKE) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/scripts/grayscale.cpp.i
+.PHONY : scripts/grayscale.cpp.i
 
-grayscale.s: grayscale.cpp.s
+scripts/grayscale.s: scripts/grayscale.cpp.s
 
-.PHONY : grayscale.s
+.PHONY : scripts/grayscale.s
 
 # target to generate assembly for a file
-grayscale.cpp.s:
-	$(MAKE) -f CMakeFiles/Gray.dir/build.make CMakeFiles/Gray.dir/grayscale.cpp.s
-.PHONY : grayscale.cpp.s
+scripts/grayscale.cpp.s:
+	$(MAKE) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/scripts/grayscale.cpp.s
+.PHONY : scripts/grayscale.cpp.s
 
 # Help Target
 help:
@@ -158,10 +158,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... Gray"
-	@echo "... grayscale.o"
-	@echo "... grayscale.i"
-	@echo "... grayscale.s"
+	@echo "... Main"
+	@echo "... scripts/grayscale.o"
+	@echo "... scripts/grayscale.i"
+	@echo "... scripts/grayscale.s"
 .PHONY : help
 
 
